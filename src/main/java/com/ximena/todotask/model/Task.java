@@ -18,13 +18,20 @@ import lombok.Setter;
 @Entity
 @Table(name = "tasks")
 public class Task {
+  /** Id */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  /** Titulo */
   @Column(name = "title", nullable = false, length = 100)
   private String title;
+
+  /** Estado hecho o no hecho */
   @Column(name = "done", nullable = false)
-  private boolean isDone;
+  private Boolean done;
+
+  /** Prioridad */
   @Column(name = "priority", nullable = false)
   private int priority;
 
