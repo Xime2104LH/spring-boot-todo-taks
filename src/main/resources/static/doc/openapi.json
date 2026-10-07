@@ -1,0 +1,264 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Mi API",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081"
+    }
+  ],
+  "tags": [
+    {
+      "name": "TaskController",
+      "description": "Operaciones sobre Tareas"
+    }
+  ],
+  "paths": {
+    "/api/v1/tasks": {
+      "get": {
+        "summary": "Obtener listado de todos las tareas",
+        "deprecated": false,
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/fc2b3493e77e7cac28674afdc43cc189"
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "[\n  {\n    \"id\": 0,\n    \"title\": \"\",\n    \"done\": true,\n    \"priority\": 0\n  }\n]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-tasks-GET",
+        "parameters": []
+      }
+    },
+    "/api/v1/task/{id}": {
+      "get": {
+        "summary": "Obtener una tarea por su id",
+        "deprecated": false,
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/fc2b3493e77e7cac28674afdc43cc189"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"id\": 0,\n  \"title\": \"\",\n  \"done\": true,\n  \"priority\": 0\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-task-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "No comments found.",
+            "required": true,
+            "example": "0",
+            "name": "id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Eliminar una tarea por su id",
+        "deprecated": false,
+        "tags": [
+          "TaskController"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {},
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "Return void."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-task-{id}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "No comments found.",
+            "required": true,
+            "example": "0",
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/task": {
+      "post": {
+        "summary": "Crear una nueva tarea",
+        "deprecated": false,
+        "tags": [
+          "TaskController"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/fc2b3493e77e7cac28674afdc43cc189"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"title\": \"\",\n  \"done\": true,\n  \"priority\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/fc2b3493e77e7cac28674afdc43cc189"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"id\": 0,\n  \"title\": \"\",\n  \"done\": true,\n  \"priority\": 0\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-task-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/task/done/{id}": {
+      "post": {
+        "summary": "Actualizar el estado de una tarea a \"done\" por su id",
+        "deprecated": false,
+        "tags": [
+          "TaskController"
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "curl -X POST -i 'http://localhost:8081/api/v1/task/done/{id}'"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {},
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "Return void."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-task-done-{id}-POST",
+        "parameters": [
+          {
+            "schema": {
+              "format": "int64",
+              "type": "number"
+            },
+            "in": "path",
+            "description": "No comments found.",
+            "required": true,
+            "example": "0",
+            "name": "id"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "defaultPrimitive": {
+        "format": "string",
+        "type": "string"
+      },
+      "fc2b3493e77e7cac28674afdc43cc189": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "Id",
+            "type": "number",
+            "example": "0"
+          },
+          "title": {
+            "format": "string",
+            "description": "Titulo",
+            "type": "string"
+          },
+          "done": {
+            "format": "boolean",
+            "description": "Estado hecho o no hecho",
+            "type": "boolean",
+            "example": "true"
+          },
+          "priority": {
+            "format": "int32",
+            "description": "Prioridad",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "d751713988987e9331980363e24189ce": {}
+    }
+  }
+}

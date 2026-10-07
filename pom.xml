@@ -118,6 +118,15 @@
 					</execution>
 				</executions>
 			</plugin>
+      <plugin>
+        <groupId>com.ly.smart-doc</groupId>
+        <artifactId>smart-doc-maven-plugin</artifactId>
+        <version>3.0.8</version> <!-- verifica la última en Maven Central -->
+        <configuration>
+          <configFile>./src/main/resources/smart-doc.json</configFile>
+          <projectName>Mi API</projectName>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 

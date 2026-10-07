@@ -1,0 +1,11 @@
+{
+  "serverUrl": "http://localhost:8081",
+  "outPath": "src/main/resources/static/doc",
+  "isStrict": false,
+  "allInOne": true,
+  "createDebugPage": true,
+  "coverOld": true,
+  "style": "highlight",
+  "projectName": "Mi API TodoTask",
+  "packageFilters": "com.ximena.todotask.controller.*"
+}
