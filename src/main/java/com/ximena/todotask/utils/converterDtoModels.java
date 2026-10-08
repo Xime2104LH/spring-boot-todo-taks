@@ -1,5 +1,6 @@
 package com.ximena.todotask.utils;
 
+import com.ximena.todotask.dto.TaskRequestDto;
 import com.ximena.todotask.dto.TaskResponseDto;
 import com.ximena.todotask.model.Task;
 
@@ -10,8 +11,8 @@ public class converterDtoModels {
     return dto;
   }
 
-  public static Task convertToEntity(TaskResponseDto dto) {
-    Task task = new Task(dto.getId(), dto.getTitle(), dto.getDone(), dto.getPriority());
+  public static Task convertToEntity(TaskRequestDto dto) {
+    Task task = new Task(null, dto.getTitle(), dto.getDone(), dto.getPriority());
     return task;
   }
 
