@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ximena.todotask.dto.TaskResponseDto;
 import com.ximena.todotask.model.Task;
 import com.ximena.todotask.service.TaskService;
 
@@ -28,7 +29,7 @@ public class TaskController {
    * @return listado de tareas
    */
   @GetMapping ("/tasks")
-  public List<Task> getAllTasks() {
+  public List<TaskResponseDto> getAllTasks() {
     return taskService.getAllTasks();
   }
 

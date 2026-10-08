@@ -1,12 +1,15 @@
 package com.ximena.todotask.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ximena.todotask.dto.TaskResponseDto;
 import com.ximena.todotask.model.Task;
 import com.ximena.todotask.repository.TaskRepository;
+import com.ximena.todotask.utils.converterDtoModels;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -20,8 +23,15 @@ public class TaskService {
     return taskRepository.save(task);
   }
 
-  public List<Task> getAllTasks() {
-    return taskRepository.findAllByOrderByIdAsc();
+  public List<TaskResponseDto> getAllTasks() {
+    List<Task> tasks = taskRepository.findAllByOrderByIdAsc();
+    List<TaskResponseDto> taskResponseDtos =  new ArrayList<>();
+
+    for (Task t : tasks) {
+      TaskResponseDto taskResponseDto = converterDtoModels.convertToDto(t);
+      taskResponseDtos.add(taskResponseDto);
+    }
+    return taskResponseDtos;
   }
 
   public Task getTaskById(Long id) {

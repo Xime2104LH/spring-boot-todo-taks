@@ -17,8 +17,8 @@ public interface TaskRepository  extends JpaRepository<Task, Long> {
   List<Task> findAllByOrderByIdAsc();
   //ByOrderByIdAsc
 
-  @Transactional 
-  @Modifying 
+  @Transactional
+  @Modifying
   @Query("UPDATE Task t SET t.done = CASE WHEN t.done = true THEN false ELSE true END WHERE t.id = :id")
   void updateStatusDone(Long id);
 
