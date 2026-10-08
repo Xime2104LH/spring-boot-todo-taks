@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ximena.todotask.dto.TaskRequestDto;
 import com.ximena.todotask.dto.TaskResponseDto;
 import com.ximena.todotask.model.Task;
 import com.ximena.todotask.service.TaskService;
@@ -39,7 +40,7 @@ public class TaskController {
    * @return una tarea
    */
   @GetMapping("/task/{id}")
-  public Task getTaskById(@PathVariable Long id) {
+  public TaskResponseDto getTaskById(@PathVariable Long id) {
     return taskService.getTaskById(id);
   }
 
@@ -49,7 +50,7 @@ public class TaskController {
    * @return la tarea creada
    */
   @PostMapping("/task")
-  public Task createNewTask(@RequestBody Task task) {
+  public Task createNewTask(@RequestBody TaskRequestDto task) {
     return taskService.createNewTask(task);
   }
 

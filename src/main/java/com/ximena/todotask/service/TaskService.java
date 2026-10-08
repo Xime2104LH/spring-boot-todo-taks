@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ximena.todotask.dto.TaskRequestDto;
 import com.ximena.todotask.dto.TaskResponseDto;
 import com.ximena.todotask.model.Task;
 import com.ximena.todotask.repository.TaskRepository;
@@ -19,8 +20,8 @@ public class TaskService {
   @Autowired 
   private TaskRepository taskRepository;
 
-  public Task createNewTask(Task task) {
-    return taskRepository.save(task);
+  public Task createNewTask(TaskRequestDto taskRequestDto) {
+    return taskRepository.save(converterDtoModels.convertToEntity(taskRequestDto));
   }
 
   public List<TaskResponseDto> getAllTasks() {
@@ -34,8 +35,10 @@ public class TaskService {
     return taskResponseDtos;
   }
 
-  public Task getTaskById(Long id) {
-    return taskRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No existe la tarea con id " + id));
+  public TaskResponseDto getTaskById(Long id) {
+    Task taskFounded = taskRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("No existe la tarea con id " + id));
+
+    return converterDtoModels.convertToDto(taskFounded);
   }
 
   public void deleteTask(Long id) {
